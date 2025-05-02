@@ -42,7 +42,6 @@ if ($usuario['rol'] === 'docente') {
     $stmt->execute([$id]);
 }
 
-// Borrar al usuario
 $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = ?");
 $stmt->execute([$id]);
 
