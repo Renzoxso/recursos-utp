@@ -1,22 +1,22 @@
 <?php
-$archivo = $_GET['archivo'] ?? null;
+// Ruta donde están almacenados los archivos
+$ruta = '../uploads/';
 
-if ($archivo) {
-    $ruta = '../uploads/' . basename($archivo);
+if (isset($_GET['archivo'])) {
+    $archivo = basename($_GET['archivo']); // sanitiza
+    $ruta_completa = $ruta . $archivo;
 
-    if (file_exists($ruta)) {
+    if (file_exists($ruta_completa)) {
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($ruta) . '"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($ruta));
-        readfile($ruta);
+        header('Content-Disposition: attachment; filename="' . $archivo . '"');
+        header('Content-Length: ' . filesize($ruta_completa));
+        readfile($ruta_completa);
         exit;
     } else {
         echo "El archivo no existe.";
     }
 } else {
-    echo "Archivo no especificado.";
+    echo "No se ha especificado ningún archivo.";
 }
+?>
