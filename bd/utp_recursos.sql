@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2025 a las 05:00:33
+-- Tiempo de generación: 02-05-2025 a las 08:35:15
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `utp_recursos`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recursos`
+--
+
+CREATE TABLE `recursos` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `archivo` varchar(255) DEFAULT NULL,
+  `docente_id` int(11) NOT NULL,
+  `fecha_subida` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `recursos`
+--
+
+INSERT INTO `recursos` (`id`, `titulo`, `descripcion`, `archivo`, `docente_id`, `fecha_subida`) VALUES
+(6, 'sapo', 'eres', '1746167683_1746167341_Captura de pantalla 2025-05-02 010542.jpg', 2, '2025-05-02 01:34:43');
 
 -- --------------------------------------------------------
 
@@ -53,23 +75,28 @@ CREATE TABLE `usuarios` (
   `correo` varchar(100) DEFAULT NULL,
   `contraseña` varchar(255) DEFAULT NULL,
   `rol_id` int(11) DEFAULT NULL,
-  `intereses` text DEFAULT NULL,
-  `historial` text DEFAULT NULL
+  `intereses` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `rol_id`, `intereses`, `historial`) VALUES
-(1, 'Jorge', 'jorge64@gmail.com', '$2y$10$En9ZYAbgul/EW/1aBeWUE.N8z1P7jHm8GHnw9t8xBqvueKluO5J3m', 2, NULL, NULL),
-(2, 'Renzo', 'renzo21@gmail.com', '$2y$10$ryNTn0.NNkt42.4UlM474evOTqfeYwXKUiZsoT70mLr5oz1g781gu', 3, NULL, NULL),
-(3, 'Joaquin', 'joaquin78@hotmail.com', '$2y$10$lCYtepcNGoKODxIUkkQpAO/PHfbjDGuhsg8losn8aYdmcQDVZm.e6', 1, NULL, NULL),
-(4, 'Pedro', 'pedro56@gmail.com', '$2y$10$6P7TRmM3qQocNxWJuds48uBhuUePG642qBwNOuwlyk7elr1NMJzOq', 2, 'Matematicas, Quimica y Fisica.', NULL);
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `rol_id`, `intereses`) VALUES
+(1, 'Bruce', 'admin@gmail.com', '$2y$10$Bx7JMoDMjFVYEZ1kLhpFfODdIqbZfIHLv4jltQvPHAolvY2g6VjBy', 1, NULL),
+(2, 'Luana', 'profe@gmail.com', '$2y$10$jYyTPm0shfmx8oQCVnUQV.3sQKkmDX2FsGCt2p8PM85KNEo88Qc5C', 2, '- Matematicas\r\n'),
+(3, 'Pedro', 'alumno@gmail.com', '$2y$10$gLE1YSjFnxskZiXb9K8oKe3AWo3fkGfM.UnVPd13kIzmVR0BW7yIC', 3, NULL);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `recursos`
+--
+ALTER TABLE `recursos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `docente_id` (`docente_id`);
 
 --
 -- Indices de la tabla `roles`
@@ -90,6 +117,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `recursos`
+--
+ALTER TABLE `recursos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -99,11 +132,17 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `recursos`
+--
+ALTER TABLE `recursos`
+  ADD CONSTRAINT `recursos_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `usuarios`
@@ -115,3 +154,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*a*/
