@@ -33,7 +33,7 @@ $recursos = $stmt->fetchAll();
   ?>
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <div>
-        <strong><?= htmlspecialchars($usuario['nombre']) ?></strong> (<?= $usuario['rol'] ?>)
+        <strong><?= htmlspecialchars($usuario['nombre']) ?></strong> (<?= $usuario['rol_id'] ?>)
       </div>
       <a href="eliminar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-danger btn-sm">Eliminar Usuario</a>
     </li>
