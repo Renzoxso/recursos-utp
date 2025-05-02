@@ -28,7 +28,7 @@ $recursos = $stmt->fetchAll();
 <h4>Usuarios Registrados</h4>
 <ul class="list-group mb-4">
   <?php
-    $usuarios = $pdo->query("SELECT * FROM usuarios WHERE rol != 'admin'")->fetchAll();
+    $usuarios = $pdo->query("SELECT * FROM usuarios WHERE rol_id != '1'")->fetchAll();
     foreach ($usuarios as $usuario):
   ?>
     <li class="list-group-item d-flex justify-content-between align-items-center">
