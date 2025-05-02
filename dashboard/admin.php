@@ -1,5 +1,5 @@
 <?php require_once '../includes/sesion.php'; ?>
-<?php require_once '../includes/config.php'; ?>
+<?php require_once '../config.php'; ?>
 <?php
 $stmt = $pdo->query("SELECT r.*, u.nombre AS docente FROM recursos r JOIN usuarios u ON r.docente_id = u.id");
 $recursos = $stmt->fetchAll();

@@ -1,5 +1,5 @@
 <?php require_once '../includes/sesion.php'; ?>
-<?php require_once '../includes/config.php'; ?>
+<?php require_once '../config.php'; ?>
 <?php
 $usuario_id = $_SESSION['usuario']['id'];
 $stmt = $pdo->prepare("SELECT * FROM recursos WHERE docente_id = ?");

@@ -1,5 +1,5 @@
 <?php require_once '../includes/sesion.php'; ?>
-<?php require_once '../includes/config.php'; ?>
+<?php require_once '../config.php'; ?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
