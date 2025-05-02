@@ -6,7 +6,7 @@ $usuario_id = $_SESSION['usuario']['id'];
 
 // Si se envía el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $intereses = $_POST['intereses'];
+    $intereses = $_POST['intereses'] ?? '';
 
     $stmt = $pdo->prepare("UPDATE usuarios SET intereses = ? WHERE id = ?");
     $stmt->execute([$intereses, $usuario_id]);
