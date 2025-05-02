@@ -11,7 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($archivo['error'] === UPLOAD_ERR_OK) {
         $nombre_archivo = time() . '_' . basename($archivo['name']);
         $ruta_destino = '../uploads/' . $nombre_archivo;
-        move_uploaded_file($archivo['tmp_name'], $ruta_destino);
+        if (move_uploaded_file($archivo['tmp_name'], $ruta_destino)) {
+            $stmt = $pdo->prepare("INSERT INTO recursos (titulo, descripcion, archivo, docente_id) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$titulo, $descripcion, $nombre_archivo, $docente_id]);
+            header('Location: docente.php');
+            exit;
+        } else {
+            $error = 'No se pudo mover el archivo a uploads. Revisa los permisos o la ruta.';
+        }
 
         $stmt = $pdo->prepare("INSERT INTO recursos (titulo, descripcion, archivo, docente_id) VALUES (?, ?, ?, ?)");
         $stmt->execute([$titulo, $descripcion, $nombre_archivo, $docente_id]);
