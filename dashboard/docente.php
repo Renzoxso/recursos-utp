@@ -20,7 +20,7 @@ $recursos = $stmt->fetchAll();
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <?= htmlspecialchars($recurso['titulo']) ?>
         <div>
-          <a href="recursos/editar.php?id=<?= $recurso['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+          <a href="recursos/editar_recurso.php?id=<?= $recurso['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
           <a href="recursos/eliminar.php?id=<?= $recurso['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
         </div>
       </li>

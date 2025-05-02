@@ -16,7 +16,7 @@ $recursos = $stmt->fetchAll();
     <?php foreach ($recursos as $recurso): ?>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <?= htmlspecialchars($recurso['titulo']) ?>
-        <a href="recursos/descargar.php?archivo=<?= urlencode($recurso['archivo']) ?>" class="btn btn-success btn-sm">Descargar</a>
+        <a href="descargar.php?archivo=<?= urlencode($recurso['archivo']) ?>" class="btn btn-success btn-sm">Descargar</a>
       </li>
     <?php endforeach; ?>
   </ul>

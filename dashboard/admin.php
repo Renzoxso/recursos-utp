@@ -18,7 +18,7 @@ $recursos = $stmt->fetchAll();
           <strong><?= htmlspecialchars($recurso['titulo']) ?></strong> - <?= htmlspecialchars($recurso['docente']) ?>
         </div>
         <div>
-          <a href="recursos/editar.php?id=<?= $recurso['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+          <a href="recursos/editar_recurso.php?id=<?= $recurso['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
           <a href="recursos/eliminar.php?id=<?= $recurso['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
         </div>
       </li>
