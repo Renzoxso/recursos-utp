@@ -47,7 +47,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <div class="mb-3">
       <label>Áreas de Interés:</label>
-      <textarea name="intereses" class="form-control" rows="3"><?= htmlspecialchars($usuario['intereses']) ?></textarea>
+      <textarea name="intereses" class="form-control" rows="3"><?= htmlspecialchars($usuario['intereses'] ?? '') ?></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     <a href="<?= $_SESSION['usuario']['rol_id'] == 2 ? 'docente.php' : 'estudiante.php' ?>" class="btn btn-secondary">Volver</a>
