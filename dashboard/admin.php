@@ -24,4 +24,19 @@ $recursos = $stmt->fetchAll();
       </li>
     <?php endforeach; ?>
   </ul>
+  <hr>
+<h4>Usuarios Registrados</h4>
+<ul class="list-group mb-4">
+  <?php
+    $usuarios = $pdo->query("SELECT * FROM usuarios WHERE rol != 'admin'")->fetchAll();
+    foreach ($usuarios as $usuario):
+  ?>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong><?= htmlspecialchars($usuario['nombre']) ?></strong> (<?= $usuario['rol'] ?>)
+      </div>
+      <a href="eliminar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-danger btn-sm">Eliminar Usuario</a>
+    </li>
+  <?php endforeach; ?>
+</ul>
 </div>
